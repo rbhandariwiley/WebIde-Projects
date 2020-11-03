@@ -1,0 +1,97 @@
+<mvc:View controllerName="com.vm.ZVM.controller.variant" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:table="sap.ui.table" xmlns:v="sap.ui.comp.smartvariants" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="Varaint Management">
+					<content>
+						<fb:FilterBar id="filterBar" persistencyKey="filterKey" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="true"
+							visible="false"></fb:FilterBar>
+						<table:Table id="DemoTableUI"
+							rows="{path : '/GETLISTSet',filters:[{ path : 'Kunag', operator : 'EQ', value1:''}, { path : 'RenStatus', operator : 'EQ', value1:null}, { path : 'Vbegdat', operator : 'EQ', value1: '2020-09-17'}, { path : 'Venddat', operator : 'EQ', value1:'2022-09-07'}]}"
+							enableColumnFreeze="true" alternateRowColors="true" enableSelectAll="true" selectionMode="MultiToggle" enableGrouping="true"
+							visibleRowCount="15" visibleRowCountMode="Interactive" rowSelectionChange="onTableRowSelect" showColumnVisibilityMenu="true">
+							<table:toolbar>
+								<Toolbar>
+									<v:SmartVariantManagement id="idVariantManagerToolBar" class="wmVariant" standardItemText="Default" showShare="true"/>
+									<ToolbarSpacer/>
+									<Button icon="sap-icon://action-settings" press="onPersoButtonPressed">
+										<layoutData>
+											<OverflowToolbarLayoutData priority="NeverOverflow"/>
+										</layoutData>
+									</Button>
+								</Toolbar>
+							</table:toolbar>
+							<table:columns>
+								<table:Column id="PROCol0" name="Contract" filtered="false" filterProperty="Vbeln" sorted="false" sortProperty="Vbeln">
+									<Label design="Bold" text="Contract" tooltip="Open"></Label>
+									<table:template>
+										<HBox renderType="Bare">
+											<Link text="{Vbeln}" class="sapUiSmallMarginEnd" emphasized="true" href="../../../../../webapp/Images/AdvanceNotif.pdf" target="_search"/>
+											<core:Icon src="sap-icon://pdf-attachment" color="red" press="onPdfViewer"></core:Icon>
+										</HBox>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol1" name="Line Items" filtered="false" hAlign="Center" class="myborder" filterProperty="PosnrC" sorted="false"
+									sortProperty="PosnrC">
+									<Label design="Bold" text="Line Items"></Label>
+									<table:template>
+										<Label text="{PosnrC}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol2" name="Start Date" filtered="false" filterProperty="Vbegdat" sorted="false" sortProperty="Vbegdat">
+									<Label design="Bold" text="Start Date"></Label>
+									<table:template>
+										<Label text="{Vbegdat}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol3" name="End date" filtered="false" filterProperty="Venddat" sorted="false" sortProperty="Venddat">
+									<Label design="Bold" text="End date"></Label>
+									<table:template>
+										<Label text="{Venddat}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol4" name="Sold TO" filtered="false" hAlign="Center" filterProperty="Kunag" sorted="false" sortProperty="Kunag">
+									<Label design="Bold" text="Sold TO"></Label>
+									<table:template>
+										<Text text="{Kunag}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol5" name="Ship To" filtered="false" filterProperty="Kunwe" sorted="false" sortProperty="Kunwe">
+									<Label design="Bold" text="Ship To"></Label>
+									<table:template>
+										<Text text="{Kunwe} {NameWe}" maxLines="2"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol6" name="Product" filtered="false" filterProperty="KunffOldSet" sorted="false" sortProperty="KunffOldSet">
+									<Label design="Bold" text="Product"></Label>
+									<table:template>
+										<Text text="{KunffOldSet}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol7" name="Quantity" filtered="false" filterProperty="ZmengOldSet" sorted="false" sortProperty="ZmengOldSet">
+									<Label design="Bold" text="Quantity"></Label>
+									<table:template>
+										<Text text="{ZmengOldSet}" maxLines="1"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol8" name="Net Price" filtered="false" filterProperty="Netwr" sorted="false" sortProperty="Netwr">
+									<Label design="Bold" text="Net Price"></Label>
+									<table:template>
+										<Text text="{ path: 'Netwr'}"/>
+									</table:template>
+								</table:Column>
+								<table:Column id="PROCol9" name="Ren Profile" filtered="false" filterProperty="RenwlProf" sorted="false" sortProperty="RenwlProf">
+									<Label design="Bold" text="Ren Profile"></Label>
+									<table:template>
+										<Text text="{path: 'RenwlProf'}"/>
+									</table:template>
+								</table:Column>
+							</table:columns>
+						</table:Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
